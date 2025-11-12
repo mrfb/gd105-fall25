@@ -40,14 +40,7 @@ void draw(){
   
   // range of human hearing is 20hz to 20 khz
   float freq = map(mouseY, height, 0, 20, 2000);
-  line(0, mouseY, width, mouseY);
-  fill(0);
-  textAlign(LEFT, CENTER);
-  text("freq: " + freq, mouseX + 30, mouseY - 30);
-  
   float amp = map(mouseX, 0, width, 0, 1);
-  line(mouseX, 0, mouseX, height);
-  text("amp: " + amp, mouseX + 30, mouseY + 30);
   
   textAlign(CENTER, CENTER);
   
@@ -121,6 +114,13 @@ void draw(){
   fill(255);
   text("pls", location.x, location.y);
   
+  // display
+  line(0, mouseY, width, mouseY);
+  fill(0);
+  textAlign(LEFT, CENTER);
+  text("freq: " + freq, mouseX + 30, mouseY - 30);
+  line(mouseX, 0, mouseX, height);
+  text("amp: " + amp, mouseX + 30, mouseY + 30);
 }
 
 void keyPressed(){
