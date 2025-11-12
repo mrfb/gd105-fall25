@@ -1,3 +1,5 @@
+import processing.svg.*;
+
 void setup(){
   size(800, 800);
   frameRate(5);
@@ -5,6 +7,10 @@ void setup(){
 
 void draw(){
   background(255);
+  
+  if(frameCount == 1){
+    beginRecord(SVG, "plot.svg");
+  }
   
   line(width * 0.50, height * 0.00,
        width * 0.50, height * 1.00);
@@ -28,6 +34,12 @@ void draw(){
     line(anchor.x - lineRadius, anchor.y + lineRadius,
          anchor.x + lineRadius, anchor.y - lineRadius);
   }
+  
+  if(frameCount == 1){
+    endRecord();
+    save("output.png");
+  }
+  
   //noLoop();
   
 }
