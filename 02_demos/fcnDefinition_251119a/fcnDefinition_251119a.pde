@@ -5,7 +5,8 @@ boolean dragging;
 
 void setup(){
   size(800, 800);
-  gamera = loadImage("turt.png");
+  gamera = loadImage("fish.png");
+  gamera.resize(int(gamera.width*0.5), int(gamera.height*0.5));
   gameraLocation = new PVector(width/2, height/2);
   gameraVelocity = PVector.random2D().mult(5);
   background(#ff00ff);
