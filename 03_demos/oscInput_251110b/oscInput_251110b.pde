@@ -41,6 +41,9 @@ void draw(){
   // range of human hearing is 20hz to 20 khz
   float freq = map(mouseY, height, 0, 20, 2000);
   float amp = map(mouseX, 0, width, 0, 1);
+  if(sin(frameCount * 0.60) < 0){
+    amp = 0;
+  }
   
   textAlign(CENTER, CENTER);
   
