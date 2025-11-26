@@ -1,5 +1,7 @@
 // tuning
 int clickSpeed = 60;
+int textFade = 55;
+int barFade = 350;
 
 // persistent variables
 GameState mode = GameState.TITLE;
@@ -32,9 +34,19 @@ void draw(){
       
     case GAME:
       background(255);
-      fill(#aa0000);
+      if(clickCount < barFade){
+        fill(#aa0000);
+      } else {
+        float fadeProgression = constrain((clickCount - barFade) / 255.0, 0, 1);
+        fill(lerpColor(#aa0000, #ffffff, fadeProgression));
+      }
       rect(0, 0, width - width * (framesSinceLastClick / float(clickSpeed)), 50);
-      fill(0);
+      
+      if(clickCount < textFade){
+        fill(0);
+      } else {
+        fill(constrain(clickCount - textFade, 0, 255));
+      }
       bigText = "It's been " + framesSinceLastClick + " frames since your last click.";
       littleText = "Click! You've clicked " + clickCount + " times.";
       if(framesSinceLastClick >= clickSpeed){
