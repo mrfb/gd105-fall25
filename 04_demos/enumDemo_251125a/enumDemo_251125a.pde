@@ -6,6 +6,10 @@ GameState mode;
 int lastClick = 0;
 int clickCount = 0;
 
+public enum GameState {
+  TITLE, GAME, GAMEOVER
+}
+
 void setup(){
   size(666, 666);
   mode = GameState.TITLE;
