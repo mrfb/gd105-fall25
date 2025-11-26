@@ -2,17 +2,16 @@
 int clickSpeed = 60;
 
 // persistent variables
-GameState mode;
+GameState mode = GameState.TITLE;
 int lastClick = 0;
 int clickCount = 0;
 
-public enum GameState {
+enum GameState {
   TITLE, GAME, GAMEOVER
 }
 
 void setup(){
   size(666, 666);
-  mode = GameState.TITLE;
   textAlign(CENTER, CENTER);
   textSize(32);
   noStroke();
@@ -38,7 +37,7 @@ void draw(){
       fill(0);
       bigText = "It's been " + framesSinceLastClick + " frames since your last click.";
       littleText = "Click! You've clicked " + clickCount + " times.";
-      if(framesSinceLastClick > clickSpeed){
+      if(framesSinceLastClick >= clickSpeed){
         mode = GameState.GAMEOVER;
       }
       break;
@@ -57,7 +56,7 @@ void draw(){
   text(littleText, width/2, height/2 + 50);
 }
 
-void mouseClicked(){
+void mousePressed(){
   lastClick = frameCount;
   clickCount++;
   
